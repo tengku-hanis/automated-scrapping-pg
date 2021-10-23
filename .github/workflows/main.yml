@@ -3,7 +3,7 @@ name: pg_scrape_schedule
 # Controls when the action will run.
 on:
   schedule:
-    - cron:  '45 12 * * *'
+    - cron:  '50 8 * * *'
 
 
 jobs: 
