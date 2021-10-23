@@ -1,4 +1,4 @@
-name: nifty50scrape
+name: pg_scrapper_manual
 
 # Controls when the action will run.
 on:
