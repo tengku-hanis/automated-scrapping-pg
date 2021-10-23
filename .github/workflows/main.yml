@@ -3,13 +3,13 @@ name: pg_scrape_schedule
 # Controls when the action will run.
 on:
   schedule:
-    - cron:  '49 8 * * *'
+    - cron:  '40 13 * * *'
 
 
 jobs: 
   autoscrape:
     # The type of runner that the job will run on
-    runs-on: windows-latest
+    runs-on: macos-latest
 
     # Load repo and install R
     steps:
@@ -21,7 +21,11 @@ jobs:
       run: |
         R -e 'install.packages("rvest")'
         R -e 'install.packages("lubridate")'
-        R -e 'install.packages("tidyverse")'
+        R -e 'install.packages("dplyr")'
+        R -e 'install.packages("tidyr")'
+        R -e 'install.packages("stringr")'
+        R -e 'install.packages("readr")'
+        R -e 'install.packages("purrr")'
     # Run R script
     - name: Scrape
       run: Rscript pg_scrapper.R
