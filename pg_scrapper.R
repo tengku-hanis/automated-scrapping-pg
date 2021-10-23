@@ -3,7 +3,11 @@
 # Packages
 library(rvest)
 library(lubridate)
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(readr)
+library(purrr)
 
 # Read  html
 pg <- read_html("https://publicgold.com.my/")
@@ -27,7 +31,7 @@ gap_price <-
   as_tibble() %>% 
   slice(13:14) %>% 
   map_df(str_remove_all, "\\s") %>% 
-  tidyr::separate(value, into = c("pg_sell", "weight_dinar"), sep = "=") %>% 
+  separate(value, into = c("pg_sell", "weight_dinar"), sep = "=") %>% 
   mutate(across(c(pg_sell, weight_dinar), parse_number)) %>% 
   mutate(pg_buy = 0,
          unit = "gram", 
@@ -153,4 +157,5 @@ pg_price <-
 
 # Write data --------------------------------------------------------------
 
-write_csv(pg_price, paste0('data/',Sys.Date(),'_pg-data','.csv'))
+write_csv(pg_price, paste0('data/', Sys.Date(), '_pg-data', '.csv'))
+
