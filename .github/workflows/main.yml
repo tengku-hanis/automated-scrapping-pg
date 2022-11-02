@@ -15,22 +15,14 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - uses: r-lib/actions/setup-r@v2
-
-    # Set-up R
-    - name: Install packages
-      run: |
-        R -e 'install.packages("rvest")'
-        R -e 'install.packages("lubridate")'
-        R -e 'install.packages("dplyr")'
-        R -e 'install.packages("tidyr")'
-        R -e 'install.packages("stringr")'
-        R -e 'install.packages("readr")'
-        R -e 'install.packages("purrr")'
+      with:
+        use-public-rspm: true
+        
     # Run R script
     - name: Scrape
       run: Rscript pg_scrapper.R
       
- # Add new files in data folder, commit along with other modified files, push
+    # Add new files in data folder, commit along with other modified files, push
     - name: Commit files
       run: |
         git config --local user.name actions-user
