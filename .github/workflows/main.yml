@@ -18,6 +18,11 @@ jobs:
       with:
         use-public-rspm: true
         
+    # Linux dependencies    
+    - name: Install libcurl on Linux
+      if: runner.os == 'Linux'
+      run: sudo apt-get install libssl-dev
+        
     # imports an action from another repository, 
     # that deals with the dependencies
     - uses: r-lib/actions/setup-r-dependencies@v2
