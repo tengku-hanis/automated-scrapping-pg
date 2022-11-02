@@ -18,6 +18,20 @@ jobs:
       with:
         use-public-rspm: true
         
+    # imports an action from another repository, 
+    # that deals with the dependencies
+    - uses: r-lib/actions/setup-r-dependencies@v2
+      with: 
+        # add all the packages used in the script!
+        packages: |
+          any::rvest
+          any::lubridate
+          any::dplyr
+          any::tidyr
+          any::stringr
+          any::readr
+          any::purrr  
+        
     # Run R script
     - name: Scrape
       run: Rscript pg_scrapper.R
