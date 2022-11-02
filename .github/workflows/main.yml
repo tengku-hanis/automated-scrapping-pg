@@ -20,8 +20,9 @@ jobs:
         
     # Linux dependencies    
     - name: Install dependencies on Linux
-      if: runner.os == 'Linux'
-      run: sudo apt-get update -y && sudo apt-get install -y libcurl4-openssl-dev
+      run: |
+        sudo apt-get install libcurl4-openssl-dev libssl-dev
+        sudo apt-get install libxml2-dev
         
     # imports an action from another repository, 
     # that deals with the dependencies
