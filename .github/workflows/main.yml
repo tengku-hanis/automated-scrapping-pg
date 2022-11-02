@@ -2,6 +2,7 @@ name: pg_scrape_schedule
 
 # Controls when the action will run.
 on:
+  workflow_dispatch:
   schedule:
     - cron:  '40 13 * * *'
 
