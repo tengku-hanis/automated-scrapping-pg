@@ -1,5 +1,14 @@
 # Web scrapping a public gold website
 
+# Install packages
+install.packages("rvest")
+install.packages("lubridate")
+install.packages("dplyr")
+install.packages("tidyr")
+install.packages("stringr")
+install.packages("readr")
+install.packages("purrr")
+
 # Packages
 library(rvest)
 library(lubridate)
